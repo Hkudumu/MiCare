@@ -1,0 +1,174 @@
+﻿
+<style>
+    .list-group {
+        margin: auto;
+        float: left;
+        padding-top: 20px;
+    }
+
+    .lead {
+        margin: auto;
+        left: 0;
+        right: 0;
+        padding-top: 10%;
+    }
+
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 40px;
+    }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+            .sidebar a:hover {
+                color: #f1f1f1;
+            }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+    #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+     $('.list-group-item').click(function (e) {
+            e.preventDefault();
+            $('.list-group-item').removeClass('active');
+            $(this).addClass('active');
+     });
+        $('#dp3').datepicker();
+    });
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+    
+</script>
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div class="list-group">
+
+        <a class="list-group-item active"><i class="fa fa-key"></i> <span>Mi Care</span></a>
+        <a href="#" class="list-group-item"><i class="fa fa-credit-card"></i> <span>RTPCR</span></a>
+        <a href="#" class="list-group-item" disabled><i class="fa fa-question-circle"></i> <span>Blood Donation</span></a>
+        <a href="#" class="list-group-item" disabled><i class="fa fa-arrow-circle-o-left"></i> <span>Funds Raise</span></a>
+
+    </div>
+</div>
+<div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+</div>
+
+<div class="cotainer">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Register</div>
+                <div class="card-body">
+                    
+                        <div class="form-group row">
+                            <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="full_name" class="form-control" name="full-name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="text" id="email_address" class="form-control" name="email-address">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="user_name" class="form-control" name="username">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                            <div class="col-md-6">
+                                <input type="text" id="phone_number" class="form-control">
+                            </div>
+                        </div>
+
+                       
+
+                        <div class="form-group row">
+                            <label for="nid_number" class="col-md-4 col-form-label text-md-right">
+                                <abbr title="National Id Card">Aadhar</abbr> Number
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" id="nid_number" class="form-control" name="nid-number">
+                            </div>
+                        </div>
+                        <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+                            <input class="span2" size="16" type="text" value="12-02-2013" readonly><span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                Register
+                            </button>
+                        </div>
+
+
+                </div>
+
+            </div>
+        </div>
+   
+</div>
+    </div>
