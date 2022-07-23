@@ -74,27 +74,7 @@
     }
     }
 </style>
-<script type="text/javascript">
-    $(document).ready(function () {
-     $('.list-group-item').click(function (e) {
-            e.preventDefault();
-            $('.list-group-item').removeClass('active');
-            $(this).addClass('active');
-     });
-        $('#dp3').datepicker();
-    });
 
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-    
-</script>
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <div class="list-group">
@@ -114,61 +94,95 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header">RTPCR Registaration Form</div>
                 <div class="card-body">
-                    
-                        <div class="form-group row">
-                            <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
-                            <div class="col-md-6">
-                                <input type="text" id="full_name" class="form-control" name="full-name">
-                            </div>
+
+                    <div class="form-group row">
+                        <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                        <div class="col-md-6">
+                            <input type="text" id="full_name" class="form-control" name="full-name">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                            <div class="col-md-6">
-                                <input type="text" id="email_address" class="form-control" name="email-address">
-                            </div>
+                    <div class="form-group row">
+                        <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                        <div class="col-md-6">
+                            <input type="text" id="email_address" class="form-control" name="email-address">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
-                            <div class="col-md-6">
-                                <input type="text" id="user_name" class="form-control" name="username">
-                            </div>
+                    <div class="form-group row">
+                        <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                        <div class="col-md-6">
+                            <input type="text" id="user_name" class="form-control" name="username">
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
-                            <div class="col-md-6">
-                                <input type="text" id="phone_number" class="form-control">
-                            </div>
+                    <div class="form-group row">
+                        <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                        <div class="col-md-6">
+                            <input type="text" id="phone_number" class="form-control">
                         </div>
+                    </div>
 
-                       
 
-                        <div class="form-group row">
-                            <label for="nid_number" class="col-md-4 col-form-label text-md-right">
-                                <abbr title="National Id Card">Aadhar</abbr> Number
+
+                    <div class="form-group row">
+                        <label for="nid_number" class="col-md-4 col-form-label text-md-right">
+                            <abbr title="National Id Card">Aadhar</abbr> Number
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" id="nid_number" class="form-control" name="nid-number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nid_number" class="col-md-4 col-form-label text-md-right">
+                            <abbr title="National Id Card">Appoinment</abbr> Date
+                        </label>
+                        <div class="col-md-6">
+                            <input id="txtDate" type="text" class="form-control date-input" readonly="readonly" />
+                            <label class="input-group-btn" for="txtDate">
+                                <span class="btn btn-default">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </label>
-                            <div class="col-md-6">
-                                <input type="text" id="nid_number" class="form-control" name="nid-number">
-                            </div>
                         </div>
-                        <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
-                            <input class="span2" size="16" type="text" value="12-02-2013" readonly><span class="add-on"><i class="icon-th"></i></span>
-                        </div>
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Register
-                            </button>
-                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            Register
+                        </button>
+                    </div>
 
 
                 </div>
 
             </div>
         </div>
-   
-</div>
+
     </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.list-group-item').click(function (e) {
+            e.preventDefault();
+            $('.list-group-item').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#txtDate').datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+
+</script>
