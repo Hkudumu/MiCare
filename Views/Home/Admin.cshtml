@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Admin</h1>
+
+<div>
+    <asp:GridView ID="gvitems" runat="server" AutoGenerateColumns="false">
+        <Columns>
+            <asp:BoundField DataField="ItemId" HeaderText="Item ID" ItemStyle-Width="30" />
+            <asp:BoundField DataField="ItemName" HeaderText="Item Name" ItemStyle-Width="150" />
+            <asp:BoundField DataField="ItemQuantity" HeaderText="Item Quantity" ItemStyle-Width="150" />
+        </Columns>
+    </asp:GridView>
+</div>    

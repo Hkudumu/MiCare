@@ -17,17 +17,43 @@ namespace MiCare.Controllers
         {
             _logger = logger;
         }
-
+       
         public IActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index(string username,string password)
+        {
+                TempData["Name"] = username;
+                if ((username != null && password != null)&&username.ToLower() == "admin" && password.ToLower() == "admin")
+                {
+
+                    return RedirectToAction("Admin");
+
+                }
+                else
+                {
+                    return RedirectToAction("Home");
+                }
+            
+           
         }
 
         public IActionResult Home()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Home(string fullname,string emailaddress,string username,string phonenumber,string nidnumber, string txtDate)
+        {
+            TempData["Msg"] = "Thankyou for Scheduling RTPCR Test";
+            return View();
+        }
+        public IActionResult Admin()
+        {
+            return View();
+        }
 
-       
     }
 }

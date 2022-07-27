@@ -74,7 +74,30 @@
     }
     }
 </style>
+<script>
+    $(document).ready(function () {
+        $('.list-group-item').click(function (e) {
+            e.preventDefault();
+            $('.list-group-item').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('#txtDate').datepicker({
+            format: "dd/mm/yyyy"
+        });
+        $('#myModal').modal('show');
+    });
 
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+    
+</script>
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <div class="list-group">
@@ -89,100 +112,101 @@
 <div>
     <button class="openbtn" onclick="openNav()">☰</button>
 </div>
+@if (TempData["Msg"] != null)
+{
 
-<div class="cotainer">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">RTPCR Registaration Form</div>
-                <div class="card-body">
-
-                    <div class="form-group row">
-                        <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
-                        <div class="col-md-6">
-                            <input type="text" id="full_name" class="form-control" name="full-name">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                        <div class="col-md-6">
-                            <input type="text" id="email_address" class="form-control" name="email-address">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
-                        <div class="col-md-6">
-                            <input type="text" id="user_name" class="form-control" name="username">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
-                        <div class="col-md-6">
-                            <input type="text" id="phone_number" class="form-control">
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group row">
-                        <label for="nid_number" class="col-md-4 col-form-label text-md-right">
-                            <abbr title="National Id Card">Aadhar</abbr> Number
-                        </label>
-                        <div class="col-md-6">
-                            <input type="text" id="nid_number" class="form-control" name="nid-number">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nid_number" class="col-md-4 col-form-label text-md-right">
-                            <abbr title="National Id Card">Appoinment</abbr> Date
-                        </label>
-                        <div class="col-md-6">
-                            <input id="txtDate" type="text" class="form-control date-input" readonly="readonly" />
-                            <label class="input-group-btn" for="txtDate">
-                                <span class="btn btn-default">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            Register
-                        </button>
-                    </div>
-
-
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-
+                <div class="modal-body">
+                    <p>@TempData["Msg"].</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        $('.list-group-item').click(function (e) {
-            e.preventDefault();
-            $('.list-group-item').removeClass('active');
-            $(this).addClass('active');
-        });
-        $('#txtDate').datepicker({
-            format: "dd/mm/yyyy"
-        });
-    });
+    <button type="button" class="btn btn-info btn-lg" id="bootstrapmodel" data-toggle="modal" data-target="#myModal" style="display:none">Open Small Modal</button>
 
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
+}
+<form method="post" asp-controller="Home" asp-action="Home" role="post">
 
-</script>
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">RTPCR Registaration Form</div>
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="full_name" class="form-control" name="fullname">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="text" id="email_address" class="form-control" name="emailaddress">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="user_name" class="form-control" name="username">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                            <div class="col-md-6">
+                                <input type="text" id="phone_number" name="phonenumber" class="form-control">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="nid_number" class="col-md-4 col-form-label text-md-right">
+                                <abbr title="National Id Card">Aadhar</abbr> Number
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" id="nid_number" class="form-control" name="nidnumber">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nid_number" class="col-md-4 col-form-label text-md-right">
+                                <abbr title="National Id Card">Appoinment</abbr> Date
+                            </label>
+                            <div class="col-md-6">
+                                <input id="txtDate" name="txtDate" type="text" class="form-control date-input" readonly="readonly" />
+                                <label class="input-group-btn" for="txtDate">
+                                    <span class="btn btn-default">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-4">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+

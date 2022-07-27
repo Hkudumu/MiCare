@@ -36,7 +36,10 @@
                             <img src="/Images/Micron-logo.png" alt="Responsive image" height="60" width="50"><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mi Care</a>
                         </div>
                         <div class="box-cell box2">
-                            <h3 style="color:white">Welcome Hemanth</h3>
+                            @if (TempData["Name"] != null)
+                            {
+                                <h3 style="color:white">Welcome @TempData["Name"]</h3>
+                            }
                         </div>
                     </div>
                 </div>
