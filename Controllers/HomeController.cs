@@ -1,4 +1,5 @@
 ﻿using MiCare.Models;
+using Micron.Keystone.DirectoryServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace MiCare.Controllers
@@ -14,10 +16,11 @@ namespace MiCare.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        protected IEmailService EmailService { get; }
+        public HomeController(ILogger<HomeController> logger, IEmailService emailService)
         {
             _logger = logger;
+            this.EmailService = emailService;
         }
 
         public IActionResult Index()
@@ -111,12 +114,38 @@ namespace MiCare.Controllers
                 cmd.ExecuteNonQuery();
                 cn.Close();
                 TempData["Msg"] = "Thankyou for Scheduling RTPCR Test";
+                DoSendEmail(emailaddress);
             }
+
             return View();
         }
         public IActionResult Admin()
         {
             return View();
+        }
+
+        public async void DoSendEmail(string username)
+        {
+            try
+            {
+                var body = "Thanks for Scheduling RTPCR Test.. Agent will be assigned soon";
+
+                var message = new MailMessage()
+                {
+                    To = { new MailAddress($"{username}") },
+                    Subject = "RTPCR Test Appointment Date "+ DateTime.Now,
+                    Body = body,
+                    IsBodyHtml = false // set to true if passing an HTML body
+                };
+
+                await this.EmailService.SendEmailAsync(message);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+           
         }
 
     }
