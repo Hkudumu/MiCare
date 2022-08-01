@@ -47,6 +47,11 @@ namespace MiCare.Controllers
             return View();
         }
         [HttpPost]
+        public IActionResult LoadData()
+        {
+            return Json("");
+        }
+        [HttpPost]
         public IActionResult Home(string fullname,string emailaddress,string username,string phonenumber,string nidnumber, string txtDate)
         {
             string query = "INSERT INTO dbo.ApprovalFlow (UserId, UserName, UserEmail, UserPhone, UserIdenitity, RegistrationDate) " +
