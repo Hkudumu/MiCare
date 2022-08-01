@@ -31,37 +31,25 @@
                 "url": "/Home/LoadData",
                 "type": "POST",
                 "datatype": "json",
-                //"success": function (data) {
-                //    $.each(data, function (i, post) {
-                //        alert(post)
-                //    });
-                //},
-                //"error": function (textStatus, errorThrown) {
-                //    alert('failure')
-                //}
             },
             "columnDefs": [{
                 "targets": [0],
                 "visible": true,
                 "searchable": true
             }],
-           // "data": "data",
             "columns": [
-                { "data": "UserId", "name": "UserId", "autoWidth": true },
-                { "data": "UserName", "name": "UserName", "autoWidth": true },
-                { "data": "UserEmail", "name": "UserEmail", "autoWidth": true },
-                { "data": "UserPhone", "name": "UserPhone", "autoWidth": true },
-                { "data": "Aadhar_Number", "name": "Aadhar_Number", "autoWidth": true },
-                { "data": "Registation_Date", "name": "Registation_Date", "autoWidth": true }
-                //,{
-                //    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/DemoGrid/Edit/' + full.CustomerID + '">Edit</a>'; }
-                //},
-                //{
-                //    data: null,
-                //    render: function (data, type, row) {
-                //        return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.UserID + "'); >Delete</a>";
-                //    }
-                //},
+                { "data": "userId", "name": "UserId", "autoWidth": true },
+                { "data": "userName", "name": "UserName", "autoWidth": true },
+                { "data": "userEmail", "name": "UserEmail", "autoWidth": true },
+                { "data": "userPhone", "name": "UserPhone", "autoWidth": true },
+                { "data": "aadhar_Number", "name": "Aadhar_Number", "autoWidth": true },
+                { "data": "registation_Date", "name": "Registation_Date", "autoWidth": true }
+                ,{
+                    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Home/Approval/' + full.userId + '">Approve</a>'; }
+                },
+                {
+                    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Home/Approval/' + full.userId + '">Reject</a>'; }
+                },
             ]
 
         });
