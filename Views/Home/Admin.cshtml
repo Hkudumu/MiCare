@@ -9,6 +9,7 @@
                     <th>UserEmail</th>
                     <th>UserPhone</th>
                     <th>Aadhar Number</th>
+                    <th>UserAddress</th>
                     <th>Registation Date</th>
                     <th>Approve</th>
                     <th>Reject</th>
@@ -43,6 +44,7 @@
                 { "data": "userEmail", "name": "UserEmail", "autoWidth": true },
                 { "data": "userPhone", "name": "UserPhone", "autoWidth": true },
                 { "data": "aadhar_Number", "name": "Aadhar_Number", "autoWidth": true },
+                { "data": "userAddress", "name": "UserAddress", "autoWidth": true },
                 { "data": "registation_Date", "name": "Registation_Date", "autoWidth": true }
                 ,{
                     "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/Home/Approval/' + full.userId + '">Approve</a>'; }

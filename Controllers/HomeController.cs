@@ -77,6 +77,7 @@ namespace MiCare.Controllers
                              UserEmail = dataRow.Field<string>("UserEmail"),
                              UserPhone = Convert.ToInt64(dataRow.Field<Int64>("UserPhone")),
                              Aadhar_Number = Convert.ToInt64(dataRow.Field<Int64>("UserIdenitity")),
+                             UserAddress= dataRow.Field<string>("UserAddress"),
                              Registation_Date = Convert.ToDateTime(dataRow.Field<DateTime>("RegistrationDate"))
                          }).ToList();
                     recordsTotal = ds.Tables[0].Rows.Count;
@@ -94,10 +95,10 @@ namespace MiCare.Controllers
            
         }
         [HttpPost]
-        public IActionResult Home(string fullname, string emailaddress, string username, string phonenumber, string nidnumber, string txtDate)
+        public IActionResult Home(string fullname, string emailaddress, string username, string phonenumber, string nidnumber,string useraddress, string txtDate)
         {
-            string query = "INSERT INTO dbo.ApprovalFlow (UserId, UserName, UserEmail, UserPhone, UserIdenitity, RegistrationDate) " +
-                   "VALUES (@UserId, @UserName, @UserEmail, @UserPhone, @UserIdenitity, @RegistrationDate) ";
+            string query = "INSERT INTO dbo.ApprovalFlow (UserId, UserName, UserEmail, UserPhone, UserIdenitity,UserAddress, RegistrationDate) " +
+                   "VALUES (@UserId, @UserName, @UserEmail, @UserPhone, @UserIdenitity,@UserAddress, @RegistrationDate) ";
             string connectionString = "Data Source=.;Initial Catalog=MiCare;User ID =sa; Password =Micron@123";
             // create connection and command
             using (SqlConnection cn = new SqlConnection(connectionString))
@@ -109,6 +110,7 @@ namespace MiCare.Controllers
                 cmd.Parameters.Add("@UserId", SqlDbType.VarChar, 50).Value = username;
                 cmd.Parameters.Add("@UserPhone", SqlDbType.BigInt, 50).Value = Convert.ToInt64(phonenumber);
                 cmd.Parameters.Add("@UserIdenitity", SqlDbType.BigInt).Value = Convert.ToInt64(nidnumber);
+                cmd.Parameters.Add("@UserAddress", SqlDbType.VarChar).Value = useraddress;
                 cmd.Parameters.Add("@RegistrationDate", SqlDbType.Date, 50).Value = txtDate;
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -133,7 +135,7 @@ namespace MiCare.Controllers
                 var message = new MailMessage()
                 {
                     To = { new MailAddress($"{username}") },
-                    Subject = "RTPCR Test Appointment Date "+ DateTime.Now,
+                    Subject = "RTPCR Test Appointment Date "+ DateTime.Now.Date,
                     Body = body,
                     IsBodyHtml = false // set to true if passing an HTML body
                 };

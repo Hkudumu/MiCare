@@ -18,6 +18,8 @@ namespace MiCare
 
         public long Aadhar_Number { get; set; }
 
+        public string UserAddress { get; set; }
+
         public DateTime Registation_Date { get; set; }
     }
 }
