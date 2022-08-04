@@ -95,7 +95,7 @@ namespace MiCare.Controllers
            
         }
         [HttpPost]
-        public IActionResult Home(string fullname, string emailaddress, string username, string phonenumber, string nidnumber,string useraddress, string txtDate)
+        public IActionResult Home(string fullname, string emailaddress, string username, string phonenumber, string nidnumber,string useraddress, DateTime txtDate)
         {
             string query = "INSERT INTO dbo.ApprovalFlow (UserId, UserName, UserEmail, UserPhone, UserIdenitity,UserAddress, RegistrationDate) " +
                    "VALUES (@UserId, @UserName, @UserEmail, @UserPhone, @UserIdenitity,@UserAddress, @RegistrationDate) ";
